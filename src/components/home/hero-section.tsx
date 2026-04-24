@@ -21,6 +21,11 @@ export function HeroSection() {
         <aside className="hero-panel">
           <p className="hero-panel__label">Current Positioning</p>
           <p className="hero-panel__body">{siteContent.role}</p>
+          <div className="hero-panel__visual">
+            <span>Luxury motion motif</span>
+            <strong>Floating Glass Orb + Silver Ring</strong>
+            <p>One connected object that travels from the hero into the story section.</p>
+          </div>
           <div className="metric-grid">
             {siteContent.metrics.map((metric) => (
               <div className="metric-card" key={metric.label}>

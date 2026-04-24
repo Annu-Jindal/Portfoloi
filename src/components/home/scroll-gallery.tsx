@@ -90,10 +90,10 @@ export function ScrollGallery() {
           <div className="shell story-stage__grid">
             <div className="story-copy">
               <p className="section-kicker">Editorial Motion</p>
-              <h3>Less template. More atmosphere, pacing, and intention.</h3>
+              <h3>The orb becomes the connector between sections, not just decoration.</h3>
               <p>
-                Each frame behaves like a magazine spread in motion: staggered depth, quiet animation, and enough
-                restraint to feel premium instead of flashy.
+                It begins near the hero, drifts diagonally through the viewport, expands with a restrained glow, and
+                settles into the image stack so the entire scroll reads as one visual sentence.
               </p>
               <div className="story-note">
                 Add your final photos later in <code>/public/images</code> and wire them into the gallery data file.

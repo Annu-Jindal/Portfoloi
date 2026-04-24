@@ -258,6 +258,35 @@ textarea {
   align-self: end;
 }
 
+.hero-panel__visual {
+  margin-top: 1.2rem;
+  padding: 1rem 1.05rem;
+  border-radius: 1.3rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-panel__visual span {
+  display: block;
+  color: var(--accent-bright);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-panel__visual strong {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.hero-panel__visual p {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -289,6 +318,119 @@ textarea {
 .profile-section,
 .contact-section {
   padding: 4rem 0 1rem;
+}
+
+.scroll-orb-bridge {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 6;
+  transform: translate3d(var(--orb-x), var(--orb-y), 0);
+  will-change: transform;
+}
+
+.scroll-orb {
+  position: relative;
+  width: 15rem;
+  aspect-ratio: 1;
+  transform:
+    translate3d(-50%, -50%, 0)
+    rotate(var(--orb-rotate))
+    scale(var(--orb-scale));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.scroll-orb__halo,
+.scroll-orb__ring,
+.scroll-orb__core,
+.scroll-orb__highlight,
+.scroll-orb__grain {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+}
+
+.scroll-orb__halo {
+  inset: -14%;
+  background:
+    radial-gradient(circle, rgba(231, 210, 173, 0.26), rgba(190, 157, 103, 0.06) 44%, transparent 72%);
+  filter: blur(24px);
+  opacity: var(--orb-glow);
+}
+
+.scroll-orb__ring {
+  inset: 6%;
+  border: 1px solid rgba(242, 240, 236, 0.34);
+  box-shadow:
+    inset 0 0 16px rgba(255, 255, 255, 0.2),
+    0 0 26px rgba(214, 198, 170, 0.08);
+  transform: rotate(18deg);
+}
+
+.scroll-orb__ring::before,
+.scroll-orb__ring::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+}
+
+.scroll-orb__ring::before {
+  inset: 10% 24%;
+  border-top: 1px solid rgba(255, 255, 255, 0.46);
+  transform: rotate(-32deg);
+  opacity: 0.7;
+}
+
+.scroll-orb__ring::after {
+  inset: 22% 10%;
+  border-left: 1px solid rgba(184, 187, 194, 0.32);
+  transform: rotate(18deg);
+}
+
+.scroll-orb__core {
+  inset: 14%;
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.18) 24%, transparent 38%),
+    radial-gradient(circle at 64% 66%, rgba(255, 214, 164, 0.2), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.04) 42%, rgba(27, 27, 27, 0.46));
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow:
+    inset 0 0 18px rgba(255, 255, 255, 0.24),
+    inset 0 -18px 32px rgba(0, 0, 0, 0.34),
+    0 26px 56px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.scroll-orb__highlight {
+  background: none;
+}
+
+.scroll-orb__highlight--primary {
+  inset: 12% 18% 46% 22%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.04));
+  filter: blur(6px);
+  opacity: 0.82;
+}
+
+.scroll-orb__highlight--secondary {
+  inset: 52% 26% 18% 40%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.26), transparent 72%);
+  filter: blur(10px);
+  opacity: 0.56;
+}
+
+.scroll-orb__grain {
+  background:
+    radial-gradient(circle at 20% 22%, rgba(255, 255, 255, 0.14), transparent 16%),
+    radial-gradient(circle at 72% 34%, rgba(255, 255, 255, 0.1), transparent 12%),
+    radial-gradient(circle at 48% 72%, rgba(195, 162, 106, 0.12), transparent 18%);
+  mix-blend-mode: screen;
+  opacity: 0.75;
 }
 
 .story-intro,
@@ -712,6 +854,10 @@ textarea {
   .gallery-stack {
     min-height: 25rem;
   }
+
+  .scroll-orb {
+    width: 11rem;
+  }
 }
 
 @media (max-width: 720px) {
@@ -747,6 +893,14 @@ textarea {
     min-height: 22rem;
   }
 
+  .scroll-orb-bridge {
+    opacity: 0.62;
+  }
+
+  .scroll-orb {
+    width: 8.2rem;
+  }
+
   .gallery-card__copy h4,
   .case-study__meta h3,
   .profile-card h3 {
@@ -764,5 +918,9 @@ textarea {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+
+  .scroll-orb-bridge {
+    display: none;
   }
 }
